@@ -156,11 +156,13 @@ Vc_SIMD_CAST_AVX_1(   int_v, double_v);
 Vc_SIMD_CAST_AVX_1(  uint_v, double_v);
 Vc_SIMD_CAST_AVX_1( short_v, double_v);
 Vc_SIMD_CAST_AVX_1(ushort_v, double_v);
+Vc_SIMD_CAST_AVX_1( uchar_v, double_v);
 
 Vc_SIMD_CAST_AVX_1(   int_v,  float_v);
 Vc_SIMD_CAST_AVX_1(  uint_v,  float_v);
 Vc_SIMD_CAST_AVX_1( short_v,  float_v);
 Vc_SIMD_CAST_AVX_1(ushort_v,  float_v);
+Vc_SIMD_CAST_AVX_1( uchar_v,  float_v);
 
 Vc_SIMD_CAST_AVX_1(double_v,    int_v);
 Vc_SIMD_CAST_AVX_1( float_v,    int_v);
@@ -199,6 +201,18 @@ Vc_SIMD_CAST_AVX_2(   int_v, ushort_v);
 Vc_SIMD_CAST_AVX_2(  uint_v, ushort_v);
 Vc_SIMD_CAST_AVX_3(double_v, ushort_v);
 Vc_SIMD_CAST_AVX_4(double_v, ushort_v);
+
+Vc_SIMD_CAST_AVX_1(double_v,  uchar_v);
+Vc_SIMD_CAST_AVX_1( float_v,  uchar_v);
+Vc_SIMD_CAST_AVX_1(   int_v,  uchar_v);
+Vc_SIMD_CAST_AVX_1(  uint_v,  uchar_v);
+Vc_SIMD_CAST_AVX_1( short_v,  uchar_v);
+Vc_SIMD_CAST_AVX_2(double_v,  uchar_v);
+Vc_SIMD_CAST_AVX_2( float_v,  uchar_v);
+Vc_SIMD_CAST_AVX_2(   int_v,  uchar_v);
+Vc_SIMD_CAST_AVX_2(  uint_v,  uchar_v);
+Vc_SIMD_CAST_AVX_3(double_v,  uchar_v);
+Vc_SIMD_CAST_AVX_4(double_v,  uchar_v);
 #endif
 
 // 1 SSE::Vector to 1 AVX2::Vector {{{2
@@ -208,6 +222,7 @@ Vc_SIMD_CAST_1(SSE::   int_v, AVX2::double_v);
 Vc_SIMD_CAST_1(SSE::  uint_v, AVX2::double_v);
 Vc_SIMD_CAST_1(SSE:: short_v, AVX2::double_v);
 Vc_SIMD_CAST_1(SSE::ushort_v, AVX2::double_v);
+Vc_SIMD_CAST_1(SSE:: uchar_v, AVX2::double_v);
 
 Vc_SIMD_CAST_1(SSE::double_v, AVX2:: float_v);
 Vc_SIMD_CAST_1(SSE:: float_v, AVX2:: float_v);
@@ -215,37 +230,44 @@ Vc_SIMD_CAST_1(SSE::   int_v, AVX2:: float_v);
 Vc_SIMD_CAST_1(SSE::  uint_v, AVX2:: float_v);
 Vc_SIMD_CAST_1(SSE:: short_v, AVX2:: float_v);
 Vc_SIMD_CAST_1(SSE::ushort_v, AVX2:: float_v);
+Vc_SIMD_CAST_1(SSE:: uchar_v, AVX2:: float_v);
 
 #ifdef Vc_IMPL_AVX2
 Vc_SIMD_CAST_1(SSE::double_v, AVX2::   int_v);
 Vc_SIMD_CAST_1(SSE::double_v, AVX2::  uint_v);
 Vc_SIMD_CAST_1(SSE::double_v, AVX2:: short_v);
 Vc_SIMD_CAST_1(SSE::double_v, AVX2::ushort_v);
+Vc_SIMD_CAST_1(SSE::double_v, AVX2:: uchar_v);
 
 Vc_SIMD_CAST_1(SSE:: float_v, AVX2::   int_v);
 Vc_SIMD_CAST_1(SSE:: float_v, AVX2::  uint_v);
 Vc_SIMD_CAST_1(SSE:: float_v, AVX2:: short_v);
 Vc_SIMD_CAST_1(SSE:: float_v, AVX2::ushort_v);
+Vc_SIMD_CAST_1(SSE:: float_v, AVX2:: uchar_v);
 
 Vc_SIMD_CAST_1(SSE::   int_v, AVX2::   int_v);
 Vc_SIMD_CAST_1(SSE::  uint_v, AVX2::   int_v);
 Vc_SIMD_CAST_1(SSE:: short_v, AVX2::   int_v);
 Vc_SIMD_CAST_1(SSE::ushort_v, AVX2::   int_v);
+Vc_SIMD_CAST_1(SSE:: uchar_v, AVX2::   int_v);
 
 Vc_SIMD_CAST_1(SSE::   int_v, AVX2::  uint_v);
 Vc_SIMD_CAST_1(SSE::  uint_v, AVX2::  uint_v);
 Vc_SIMD_CAST_1(SSE:: short_v, AVX2::  uint_v);
 Vc_SIMD_CAST_1(SSE::ushort_v, AVX2::  uint_v);
+Vc_SIMD_CAST_1(SSE:: uchar_v, AVX2::  uint_v);
 
 Vc_SIMD_CAST_1(SSE::   int_v, AVX2:: short_v);
 Vc_SIMD_CAST_1(SSE::  uint_v, AVX2:: short_v);
 Vc_SIMD_CAST_1(SSE:: short_v, AVX2:: short_v);
 Vc_SIMD_CAST_1(SSE::ushort_v, AVX2:: short_v);
+Vc_SIMD_CAST_1(SSE:: uchar_v, AVX2:: short_v);
 
 Vc_SIMD_CAST_1(SSE::   int_v, AVX2::ushort_v);
 Vc_SIMD_CAST_1(SSE::  uint_v, AVX2::ushort_v);
 Vc_SIMD_CAST_1(SSE:: short_v, AVX2::ushort_v);
 Vc_SIMD_CAST_1(SSE::ushort_v, AVX2::ushort_v);
+Vc_SIMD_CAST_1(SSE:: uchar_v, AVX2::ushort_v);
 #endif
 
 // 2 SSE::Vector to 1 AVX2::Vector {{{2
@@ -282,6 +304,14 @@ Vc_SIMD_CAST_2(SSE::   int_v, AVX2::ushort_v);
 Vc_SIMD_CAST_2(SSE::  uint_v, AVX2::ushort_v);
 Vc_SIMD_CAST_2(SSE:: short_v, AVX2::ushort_v);
 Vc_SIMD_CAST_2(SSE::ushort_v, AVX2::ushort_v);
+
+
+Vc_SIMD_CAST_2(SSE::double_v, AVX2:: uchar_v);
+Vc_SIMD_CAST_2(SSE:: float_v, AVX2:: uchar_v);
+Vc_SIMD_CAST_2(SSE::   int_v, AVX2:: uchar_v);
+Vc_SIMD_CAST_2(SSE::  uint_v, AVX2:: uchar_v);
+Vc_SIMD_CAST_2(SSE:: short_v, AVX2:: uchar_v);
+Vc_SIMD_CAST_2(SSE::ushort_v, AVX2:: uchar_v);
 #endif
 
 // 3 SSE::Vector to 1 AVX2::Vector {{{2
@@ -301,6 +331,14 @@ Vc_SIMD_CAST_3(SSE::  uint_v, AVX2:: short_v);
 
 Vc_SIMD_CAST_3(SSE::   int_v, AVX2::ushort_v);
 Vc_SIMD_CAST_3(SSE::  uint_v, AVX2::ushort_v);
+
+
+Vc_SIMD_CAST_3(SSE::double_v, AVX2:: uchar_v);
+Vc_SIMD_CAST_3(SSE:: float_v, AVX2:: uchar_v);
+Vc_SIMD_CAST_3(SSE::   int_v, AVX2:: uchar_v);
+Vc_SIMD_CAST_3(SSE::  uint_v, AVX2:: uchar_v);
+Vc_SIMD_CAST_3(SSE:: short_v, AVX2:: uchar_v);
+Vc_SIMD_CAST_3(SSE::ushort_v, AVX2:: uchar_v);
 #endif
 
 // 4 SSE::Vector to 1 AVX2::Vector {{{2
@@ -353,6 +391,7 @@ Vc_SIMD_CAST_1(AVX2::double_v, SSE::   int_v);
 Vc_SIMD_CAST_1(AVX2::double_v, SSE::  uint_v);
 Vc_SIMD_CAST_1(AVX2::double_v, SSE:: short_v);
 Vc_SIMD_CAST_1(AVX2::double_v, SSE::ushort_v);
+Vc_SIMD_CAST_1(AVX2::double_v, SSE:: uchar_v);
 
 Vc_SIMD_CAST_1(AVX2:: float_v, SSE::double_v);
 Vc_SIMD_CAST_1(AVX2:: float_v, SSE:: float_v);
@@ -360,6 +399,7 @@ Vc_SIMD_CAST_1(AVX2:: float_v, SSE::   int_v);
 Vc_SIMD_CAST_1(AVX2:: float_v, SSE::  uint_v);
 Vc_SIMD_CAST_1(AVX2:: float_v, SSE:: short_v);
 Vc_SIMD_CAST_1(AVX2:: float_v, SSE::ushort_v);
+Vc_SIMD_CAST_1(AVX2:: float_v, SSE:: uchar_v);
 
 #ifdef Vc_IMPL_AVX2
 Vc_SIMD_CAST_1(AVX2::   int_v, SSE::double_v);
@@ -421,6 +461,10 @@ template <typename Return, typename T>
 Vc_INTRINSIC Vc_CONST Return
 simd_cast(Scalar::Vector<T> x,
           enable_if<std::is_same<Return, AVX2::ushort_v>::value> = nullarg);
+template <typename Return, typename T>
+Vc_INTRINSIC Vc_CONST Return
+simd_cast(Scalar::Vector<T> x,
+          enable_if<std::is_same<Return, AVX2::uchar_v>::value> = nullarg);
 #endif
 
 // 2 Scalar::Vector to 1 AVX2::Vector {{{2
@@ -449,6 +493,10 @@ template <typename Return, typename T>
 Vc_INTRINSIC Vc_CONST Return
 simd_cast(Scalar::Vector<T> x0, Scalar::Vector<T> x1,
           enable_if<std::is_same<Return, AVX2::ushort_v>::value> = nullarg);
+template <typename Return, typename T>
+Vc_INTRINSIC Vc_CONST Return
+simd_cast(Scalar::Vector<T> x0, Scalar::Vector<T> x1,
+          enable_if<std::is_same<Return, AVX2::uchar_v>::value> = nullarg);
 #endif
 
 // 3 Scalar::Vector to 1 AVX2::Vector {{{2
@@ -477,6 +525,10 @@ template <typename Return, typename T>
 Vc_INTRINSIC Vc_CONST Return
 simd_cast(Scalar::Vector<T> x0, Scalar::Vector<T> x1, Scalar::Vector<T> x2,
           enable_if<std::is_same<Return, AVX2::ushort_v>::value> = nullarg);
+template <typename Return, typename T>
+Vc_INTRINSIC Vc_CONST Return
+simd_cast(Scalar::Vector<T> x0, Scalar::Vector<T> x1, Scalar::Vector<T> x2,
+          enable_if<std::is_same<Return, AVX2::uchar_v>::value> = nullarg);
 #endif
 
 // 4 Scalar::Vector to 1 AVX2::Vector {{{2
@@ -511,6 +563,11 @@ Vc_INTRINSIC Vc_CONST Return
 simd_cast(Scalar::Vector<T> x0, Scalar::Vector<T> x1, Scalar::Vector<T> x2,
           Scalar::Vector<T> x3,
           enable_if<std::is_same<Return, AVX2::ushort_v>::value> = nullarg);
+template <typename Return, typename T>
+Vc_INTRINSIC Vc_CONST Return
+simd_cast(Scalar::Vector<T> x0, Scalar::Vector<T> x1, Scalar::Vector<T> x2,
+          Scalar::Vector<T> x3,
+          enable_if<std::is_same<Return, AVX2::uchar_v>::value> = nullarg);
 #endif
 
 // 5 Scalar::Vector to 1 AVX2::Vector {{{2
@@ -540,6 +597,11 @@ Vc_INTRINSIC Vc_CONST Return
 simd_cast(Scalar::Vector<T> x0, Scalar::Vector<T> x1, Scalar::Vector<T> x2,
           Scalar::Vector<T> x3, Scalar::Vector<T> x4,
           enable_if<std::is_same<Return, AVX2::ushort_v>::value> = nullarg);
+template <typename Return, typename T>
+Vc_INTRINSIC Vc_CONST Return
+simd_cast(Scalar::Vector<T> x0, Scalar::Vector<T> x1, Scalar::Vector<T> x2,
+          Scalar::Vector<T> x3, Scalar::Vector<T> x4,
+          enable_if<std::is_same<Return, AVX2::uchar_v>::value> = nullarg);
 #endif
 
 // 6 Scalar::Vector to 1 AVX2::Vector {{{2
@@ -569,6 +631,11 @@ Vc_INTRINSIC Vc_CONST Return
 simd_cast(Scalar::Vector<T> x0, Scalar::Vector<T> x1, Scalar::Vector<T> x2,
           Scalar::Vector<T> x3, Scalar::Vector<T> x4, Scalar::Vector<T> x5,
           enable_if<std::is_same<Return, AVX2::ushort_v>::value> = nullarg);
+template <typename Return, typename T>
+Vc_INTRINSIC Vc_CONST Return
+simd_cast(Scalar::Vector<T> x0, Scalar::Vector<T> x1, Scalar::Vector<T> x2,
+          Scalar::Vector<T> x3, Scalar::Vector<T> x4, Scalar::Vector<T> x5,
+          enable_if<std::is_same<Return, AVX2::uchar_v>::value> = nullarg);
 #endif
 
 // 7 Scalar::Vector to 1 AVX2::Vector {{{2
@@ -603,6 +670,12 @@ simd_cast(Scalar::Vector<T> x0, Scalar::Vector<T> x1, Scalar::Vector<T> x2,
           Scalar::Vector<T> x3, Scalar::Vector<T> x4, Scalar::Vector<T> x5,
           Scalar::Vector<T> x6,
           enable_if<std::is_same<Return, AVX2::ushort_v>::value> = nullarg);
+template <typename Return, typename T>
+Vc_INTRINSIC Vc_CONST Return
+simd_cast(Scalar::Vector<T> x0, Scalar::Vector<T> x1, Scalar::Vector<T> x2,
+          Scalar::Vector<T> x3, Scalar::Vector<T> x4, Scalar::Vector<T> x5,
+          Scalar::Vector<T> x6,
+          enable_if<std::is_same<Return, AVX2::uchar_v>::value> = nullarg);
 #endif
 
 // 8 Scalar::Vector to 1 AVX2::Vector {{{2
@@ -637,6 +710,12 @@ simd_cast(Scalar::Vector<T> x0, Scalar::Vector<T> x1, Scalar::Vector<T> x2,
           Scalar::Vector<T> x3, Scalar::Vector<T> x4, Scalar::Vector<T> x5,
           Scalar::Vector<T> x6, Scalar::Vector<T> x7,
           enable_if<std::is_same<Return, AVX2::ushort_v>::value> = nullarg);
+template <typename Return, typename T>
+Vc_INTRINSIC Vc_CONST Return
+simd_cast(Scalar::Vector<T> x0, Scalar::Vector<T> x1, Scalar::Vector<T> x2,
+          Scalar::Vector<T> x3, Scalar::Vector<T> x4, Scalar::Vector<T> x5,
+          Scalar::Vector<T> x6, Scalar::Vector<T> x7,
+          enable_if<std::is_same<Return, AVX2::uchar_v>::value> = nullarg);
 #endif
 
 // 9 Scalar::Vector to 1 AVX2::Vector {{{2

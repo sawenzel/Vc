@@ -926,7 +926,9 @@ private:
     {
         std::cout << x;
     }
+
     template <typename T> static inline void printImpl(const T &x, ...) { printMem(x); }
+    static inline void print(const unsigned char &x) { printImpl((int)x, int()); }
     template <typename T> static inline void print(const T &x) { printImpl(x, int()); }
     static void print(const std::type_info &x)
     {
@@ -1420,7 +1422,7 @@ UnitTest::Test2<F, Typelist...> hackTypelist(void (*)(Typelist...));
 }  // namespace UnitTest
 // TEST_BEGIN / TEST_END / TEST macros {{{1
 #define ALL_VECTORS                                                                      \
-    Vc::int_v, Vc::ushort_v, Vc::double_v, Vc::uint_v, Vc::short_v, Vc::float_v
+    Vc::int_v, Vc::ushort_v, Vc::double_v, Vc::uint_v, Vc::short_v, Vc::float_v, Vc::uchar_v
 #define SIMD_ARRAYS(N__)                                                                 \
     Vc::SimdArray<int, N__>, Vc::SimdArray<unsigned short, N__>,                         \
         Vc::SimdArray<double, N__>, Vc::SimdArray<unsigned int, N__>,                    \

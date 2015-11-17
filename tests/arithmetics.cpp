@@ -312,9 +312,50 @@ TEST_TYPES(V,
     }
 }
 
-TEST_TYPES(Vec, testAnd, (int_v, ushort_v, uint_v, short_v))
+TEST_TYPES(V,
+           testModuloSmallNumbers,
+           (SimdArray<unsigned int, 31>,
+            SimdArray<unsigned short, 31>,
+            SimdArray<unsigned int, 32>,
+            SimdArray<unsigned short, 32>,
+            SimdArray<int, 31>,
+            SimdArray<short, 31>,
+            SimdArray<int, 32>,
+            SimdArray<short, 32>,
+            int_v,
+            ushort_v,
+            uint_v,
+            short_v,
+            uchar_v))
 {
-    Vec a(0x7fff);
+  using T = typename V::EntryType;
+  alignas(static_cast<size_t>(V::MemoryAlignment)) T x_mem[V::size()];
+  alignas(static_cast<size_t>(V::MemoryAlignment)) T y_mem[V::size()];
+  for (int repetition = 0; repetition < 1000; ++repetition) {
+    const V x = V::Random();
+    x.store(x_mem, Vc::Aligned);
+    V y = (V::Random() & 255) - 127;
+    y(y == 0) = -127;
+    y.store(y_mem, Vc::Aligned);
+    {
+      const V z = x % y;
+      const V reference =
+      V::generate([&](size_t i) { return x_mem[i] % y_mem[i]; });
+      COMPARE(z, reference) << ", x: " << x << ", y: " << y;
+      COMPARE(V::Zero() % y, V::Zero());
+      COMPARE(y % y, V::Zero());
+    }
+    {
+      const V z = x % 128;
+      const V reference = V::generate([&](size_t i) { return x_mem[i] % 128; });
+      COMPARE(z, reference) << ", x: " << x;
+    }
+  }
+}
+
+TEST_TYPES(Vec, testAnd, (int_v, ushort_v, uint_v, short_v, uchar_v))
+{
+    Vec a(0x7f);
     Vec b(0xf);
     COMPARE((a & 0xf), b);
     Vec c(IndexesFromZero);
@@ -323,7 +364,7 @@ TEST_TYPES(Vec, testAnd, (int_v, ushort_v, uint_v, short_v))
     COMPARE((c & 0x7ff0), Vec(zero));
 }
 
-TEST_TYPES(Vec, testShift, (int_v, ushort_v, uint_v, short_v))
+TEST_TYPES(Vec, testShift, (int_v, ushort_v, uint_v, short_v, uchar_v))
 {
     typedef typename Vec::EntryType T;
     const T step = std::max<T>(1, std::numeric_limits<T>::max() / 1000);
@@ -370,8 +411,8 @@ TEST_TYPES(Vec, testShift, (int_v, ushort_v, uint_v, short_v))
     }
 }
 
-TEST_TYPES(Vec, testOnesComplement, (int_v, ushort_v, uint_v, short_v, SimdArray<int, 17>,
-                                     SimdArray<unsigned short, 17>,
+TEST_TYPES(Vec, testOnesComplement, (int_v, ushort_v, uint_v, short_v, uchar_v,
+                                     SimdArray<int, 17>, SimdArray<unsigned short, 17>,
                                      SimdArray<unsigned int, 17>, SimdArray<short, 17>))
 {
     Vec a(One);
@@ -411,6 +452,8 @@ template<> const int NegateRangeHelper<short>::Start = -0x7fff;
 template<> const int NegateRangeHelper<short>::End = 0x7fff - 0xee;
 template<> const int NegateRangeHelper<unsigned short>::Start = 0;
 template<> const int NegateRangeHelper<unsigned short>::End = 0xffff - 0xee;
+template<> const int NegateRangeHelper<unsigned char>::Start = 0;
+template<> const int NegateRangeHelper<unsigned char>::End = 0xff - 0xe;
 
 TEST_TYPES(Vec, testNegate, ALL_TYPES)
 {
