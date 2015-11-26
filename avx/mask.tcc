@@ -206,6 +206,14 @@ template <typename T> Vc_INTRINSIC Vc_PURE AVX2::Mask<T> Mask<T, VectorAbi::Avx>
     }
     return Zero();
 }
+
+// reinterpret_components_cast {{{1
+template <typename V, typename T>
+Vc_ALWAYS_INLINE enable_if<AVX::is_mask<V>::value, V> reinterpret_components_cast(
+    Mask<T, VectorAbi::Avx> x)
+{
+    return AVX::avx_cast<typename V::VectorType>(x.data());
+}
 // }}}1
 
 /*

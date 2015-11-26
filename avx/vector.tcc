@@ -1014,6 +1014,14 @@ template <> template <int Index> Vc_INTRINSIC AVX2::double_v AVX2::double_v::bro
     constexpr VecPos Outer = static_cast<VecPos>((Index & 0x2) / 2);
     return Mem::permute<Inner, Inner>(Mem::permute128<Outer, Outer>(d.v()));
 }
+
+// reinterpret_components_cast {{{1
+template <typename V, typename T>
+Vc_ALWAYS_INLINE enable_if<AVX::is_vector<V>::value, V> reinterpret_components_cast(
+    Vector<T, VectorAbi::Avx> x)
+{
+    return AVX::avx_cast<typename V::VectorType>(x.data());
+}
 // }}}1
 }  // namespace Vc
 

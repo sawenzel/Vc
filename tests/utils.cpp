@@ -407,3 +407,18 @@ TEST_TYPES(V, testNonMemberInterleave, (ALL_VECTORS, SIMD_ARRAYS(1), SIMD_ARRAYS
         COMPARE(testValues[1], references[1]);
     }
 }
+
+TEST(reinterpret_components_cast)
+{
+    float_v x(IndexesFromZero);
+    const auto test = reinterpret_components_cast<uint_v>(x);
+    std::size_t i = 0;
+    for (; i < std::min(float_v::size(), uint_v::size()); ++i) {
+        union { float f; unsigned int u; } cvt;
+        cvt.f = i;
+        COMPARE(test[i], cvt.u);
+    }
+    for (; i < uint_v::size(); ++i) {
+        COMPARE(test[i], 0u);
+    }
+}
